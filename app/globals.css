@@ -10,7 +10,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: white;
+  background-color: white;
   @apply antialiased overflow-x-hidden;
 }
 
@@ -21,58 +21,81 @@ body {
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  /* 標準的なグラス質感カード */
+  .standard-glass {
+    @apply bg-white/50 backdrop-blur-2xl border border-white/40 shadow-xl;
   }
 }
 
-/* プレミアム・フローアニメーション設定 */
-@keyframes float-slow {
+/* プレミアム・フローアニメーション設定: パフォーマンス重視 (transform/opacity) */
+
+/* 1. 浮遊光 (Orb) */
+@keyframes orb-float {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(2%, 4%) scale(1.05); }
-  66% { transform: translate(-1%, 2%) scale(0.95); }
+  50% { transform: translate(2%, 4%) scale(1.03); }
 }
 
-@keyframes float-reverse {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-3%, -5%) scale(1.1); }
+@keyframes orb-float-reverse {
+  0%, 100% { transform: translate(0, 0) scale(1.02); }
+  50% { transform: translate(-2%, -4%) scale(1); }
 }
 
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.5; }
+/* 2. 背景グラデーション流動 (Flow Bg) */
+@keyframes flow-bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-@keyframes draw-flow {
+/* 3. 空気ラインを描画 (Air Path) */
+@keyframes air-path {
   0% { stroke-dashoffset: 1000; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { stroke-dashoffset: 0; opacity: 0; }
+  15% { opacity: 0.3; }
+  85% { opacity: 0.3; }
+  100% { stroke-dashoffset: -1000; opacity: 0; }
 }
 
-.animate-float-slow {
-  animation: float-slow 20s ease-in-out infinite;
+.animate-orb {
+  animation: orb-float 20s ease-in-out infinite;
+  will-change: transform;
 }
 
-.animate-float-reverse {
-  animation: float-reverse 25s ease-in-out infinite;
+.animate-orb-reverse {
+  animation: orb-float-reverse 26s ease-in-out infinite;
+  will-change: transform;
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 15s ease-in-out infinite;
+.animate-flow-bg {
+  background-size: 200% 200%;
+  animation: flow-bg 24s ease-in-out infinite;
+  will-change: background-position;
 }
 
-.animate-draw-flow {
-  stroke-dasharray: 1000;
-  animation: draw-flow 12s linear infinite;
+.animate-air-path {
+  stroke-dasharray: 600;
+  animation: air-path 16s linear infinite;
+  will-change: stroke-dashoffset, opacity;
 }
 
-.animate-draw-flow-delay {
-  stroke-dasharray: 1000;
-  animation: draw-flow 15s linear infinite;
-  animation-delay: -5s;
+/* モバイル対応: 動きの抑制とサイズ調整 */
+@media (max-width: 768px) {
+  .animate-orb, .animate-orb-reverse {
+    animation-duration: 40s;
+  }
+  .animate-flow-bg {
+    animation-duration: 45s;
+  }
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 8s ease-in-out infinite;
+/* アクセシビリティ: アニメーションを減らす設定への配慮 */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
 }
