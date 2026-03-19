@@ -8,18 +8,10 @@
   --background-end-rgb: 248, 250, 252;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 248, 250, 252;
-    --background-start-rgb: 15, 23, 42;
-    --background-end-rgb: 2, 6, 23;
-  }
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: white;
-  @apply antialiased;
+  @apply antialiased overflow-x-hidden;
 }
 
 @layer base {
@@ -32,20 +24,55 @@ body {
   .glass-card {
     @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
   }
-  
-  .section-container {
-    @apply mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28;
-  }
 }
 
-/* Custom fade-in for scroll animation fallback */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease-out;
+/* プレミアム・フローアニメーション設定 */
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(2%, 4%) scale(1.05); }
+  66% { transform: translate(-1%, 2%) scale(0.95); }
 }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes float-reverse {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-3%, -5%) scale(1.1); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes draw-flow {
+  0% { stroke-dashoffset: 1000; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+.animate-float-slow {
+  animation: float-slow 20s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 25s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 15s ease-in-out infinite;
+}
+
+.animate-draw-flow {
+  stroke-dasharray: 1000;
+  animation: draw-flow 12s linear infinite;
+}
+
+.animate-draw-flow-delay {
+  stroke-dasharray: 1000;
+  animation: draw-flow 15s linear infinite;
+  animation-delay: -5s;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
 }
