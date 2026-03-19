@@ -1,6 +1,6 @@
 /**
  * JapanAir-Research株式会社 コーポレートサイト
- * プロフェッショナル・最適化版: 演出の整理と保守性の向上
+ * プレミアム・情報設計最適化版: セクション順序の変更と文言の洗練
  */
 "use client";
 
@@ -84,6 +84,7 @@ const AirFlowVisual = ({ intensity = 0.2 }: { intensity?: number }) => {
 export default function JapanAirResearchHomepage() {
   const [loading, setLoading] = useState(true);
 
+  // ビジネス領域
   const businessItems = [
     {
       label: "R&D",
@@ -123,6 +124,7 @@ export default function JapanAirResearchHomepage() {
     },
   ];
 
+  // 提携メリット
   const benefits = [
     { title: "高度な研究資産の供与", desc: "長年の研究で培われた独自のイオン発生技術を、貴社製品に即座に組み込むことが可能です。", icon: <FlaskConical className="w-6 h-6 text-sky-500" /> },
     { title: "強固な技術競争優位", desc: "特許ポートフォリオを背景にした技術供与により、競合に対する明確な差別化を実現します。", icon: <Award className="w-6 h-6 text-sky-500" /> },
@@ -130,18 +132,20 @@ export default function JapanAirResearchHomepage() {
     { title: "持続的なR&D成果共有", desc: "次世代のVOC分解技術やAI制御など、当社の最新研究成果を優先的に共有します。", icon: <Zap className="w-6 h-6 text-sky-500" /> }
   ];
 
+  // 会社概要
   const companyInfo = [
     { label: "名称", value: "JapanAir-Research株式会社" },
-    { label: "所在地", value: "東京都港区芝4-5-12 三田ハイツ901 (TOP Office)" },
-    { label: "主要事業", value: "空気環境改善技術のR&D、知財管理、海外直接展開" },
-    { label: "目的", value: "気体制御技術の社会実装を通じ、グローバルな健康と快適性に寄与する" }
+    { label: "所在地", value: "〒108-0014 東京都港区芝4-5-12 三田ハイツ901 (TOP Office)" },
+    { label: "主要事業", value: "空気環境改善技術の研究開発、知的財産管理・ライセンス、海外直接投資事業" },
+    { label: "経営の目的", value: "高度な気体制御技術の社会実装を通じ、世界の健康と快適性に寄与する" }
   ];
 
+  // 収益ステップ
   const steps = [
     { title: "独自技術の研究・知財化", desc: "高度な研究成果を特許として権利化" },
     { title: "パートナー企業へ技術提供", desc: "メーカーやサービス事業者へ技術供与" },
-    { title: "製品・サービスへの実装", desc: "パートナーを通じた迅速な市場展開" },
-    { title: "実績に応じた収益化", desc: "販売利益に応じた継続的なロイヤリティ" },
+    { title: "製品・サービスの実装", desc: "パートナーを通じた迅速な市場展開" },
+    { title: "収益の最大化", desc: "販売実績に応じた継続的なロイヤリティ収益" },
   ];
 
   return (
@@ -156,9 +160,9 @@ export default function JapanAirResearchHomepage() {
             <Image src="/logo-yoko.png" alt="Corporate Logo" fill className="object-contain object-left" priority />
           </motion.div>
           <nav className="hidden gap-8 text-[11px] font-black tracking-widest text-slate-500 md:flex">
-            {["business", "overview", "benefits", "model", "contact"].map((item) => (
+            {["benefits", "business", "model", "overview", "contact"].map((item) => (
               <a key={item} href={`#${item}`} className="transition-all hover:text-sky-700 relative group uppercase">
-                {item === "business" ? "事業内容" : item === "overview" ? "概要" : item === "benefits" ? "提携利益" : item === "model" ? "収益" : "窓口"}
+                {item === "benefits" ? "提携メリット" : item === "business" ? "事業内容" : item === "model" ? "収益モデル" : item === "overview" ? "会社概要" : "提携窓口"}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-600 transition-all group-hover:w-full"></span>
               </a>
             ))}
@@ -166,7 +170,7 @@ export default function JapanAirResearchHomepage() {
         </div>
       </header>
 
-      {/* Hero Section: 静かで洗練された第一印象 */}
+      {/* 1. Hero Section: 圧倒的な第一印象 */}
       <section className="relative min-h-screen flex items-center pt-24 overflow-hidden animate-flow-bg bg-gradient-to-br from-white via-sky-50/20 to-white">
         <AirFlowVisual intensity={0.25} />
         <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.05]">
@@ -189,7 +193,7 @@ export default function JapanAirResearchHomepage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href="#contact" className="group relative flex items-center justify-center gap-3 rounded-2xl bg-slate-950 px-8 py-4 text-sm font-bold text-white shadow-xl transition-all hover:bg-sky-900 hover:-translate-y-1">
-                  技術導入・提携のご相談
+                  提携・技術導入のご相談
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </div>
@@ -213,21 +217,114 @@ export default function JapanAirResearchHomepage() {
         </div>
       </section>
 
-      {/* 会社概要: 整理された情報の提示 */}
+      {/* 2. 提携メリット: 価値訴求を最優先 */}
+      <section id="benefits" className="bg-slate-50/50 py-32 relative">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div {...fadeUp} className="max-w-2xl mb-20 text-center sm:text-left">
+            <p className="text-[10px] font-black tracking-[0.3em] text-sky-600 uppercase mb-4">Partnership Benefits</p>
+            <h2 className="text-4xl font-black tracking-tight text-slate-900 sm:text-6xl mb-8">提携メリット</h2>
+            <p className="text-xl leading-relaxed text-slate-600 font-medium font-sans italic opacity-80">Strategic value for sustainable differentiation.</p>
+          </motion.div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {benefits.map((benefit, idx) => (
+              <motion.div 
+                key={benefit.title} 
+                {...fadeUp} 
+                transition={{ duration: 0.8, delay: idx * 0.1 }} 
+                className="group flex flex-col sm:flex-row gap-8 rounded-4xl bg-white p-10 shadow-xl shadow-slate-200/20 hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="p-5 rounded-3xl bg-slate-50 group-hover:bg-white transition-colors h-fit shrink-0">
+                  {benefit.icon}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-sky-800 transition-colors uppercase tracking-tight">{benefit.title}</h3>
+                  <p className="text-base leading-relaxed text-slate-500 font-medium font-sans">{benefit.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. 事業内容: 提供ドメインを明示 */}
+      <section id="business" className="bg-white py-32 relative">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div {...fadeUp} className="max-w-3xl mb-20 text-center mx-auto">
+            <p className="text-[10px] font-black tracking-[0.3em] text-sky-600 uppercase mb-4">Our Operations</p>
+            <h2 className="text-4xl font-black tracking-tight text-slate-900 sm:text-6xl mb-8">事業内容</h2>
+          </motion.div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {businessItems.map((item, idx) => (
+              <motion.div 
+                key={item.title} 
+                {...fadeUp} 
+                transition={{ duration: 0.8, delay: idx * 0.05 }} 
+                className="group flex flex-col rounded-4xl border border-slate-100 bg-white p-10 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              >
+                <div className="flex justify-between items-start mb-10">
+                  <div className="p-4 rounded-3xl bg-slate-50 group-hover:bg-sky-50 transition-colors">
+                    {item.icon}
+                  </div>
+                  <span className="text-[10px] font-black text-slate-300 tracking-[0.2em]">{item.label}</span>
+                </div>
+                <h3 className="text-xl font-black text-slate-900 mb-6 leading-tight uppercase tracking-tight">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-500 font-medium font-sans">{item.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. 収益モデル: ビジネスの透明性を示す */}
+      <section id="model" className="py-32 bg-slate-50/50 relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-20 lg:grid-cols-2 lg:items-center">
+            <motion.div {...fadeUp}>
+              <p className="text-[10px] font-black tracking-[0.3em] text-sky-600 uppercase mb-4">Value Cycle</p>
+              <h2 className="text-4xl font-black leading-tight text-slate-900 sm:text-6xl mb-10 text-center sm:text-left">収益モデル。</h2>
+              <div className="space-y-6">
+                {steps.map((step, index) => (
+                  <div key={step.title} className="flex gap-6 group">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-lg font-black text-white">{index + 1}</div>
+                    <div>
+                      <p className="text-lg font-bold text-slate-900 mb-1">{step.title}</p>
+                      <p className="text-sm text-slate-500 font-medium font-sans">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+            
+            <motion.div {...fadeUp} className="relative rounded-[3rem] overflow-hidden shadow-2xl bg-white p-10 border border-slate-100">
+              <Image 
+                src="/royalty-flow-v2.png" 
+                alt="Revenue Flow Diagram" 
+                width={800} 
+                height={600} 
+                className="w-full h-auto object-contain" 
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. 会社概要: 検討の最終確認 */}
       <section id="overview" className="bg-white py-32 relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <motion.div {...fadeUp} className="max-w-4xl mx-auto rounded-[3rem] border border-slate-100 bg-slate-50/50 p-10 lg:p-16 relative overflow-hidden">
-            <div className="absolute top-[-20%] right-[-10%] w-[40%] h-[50%] bg-sky-200/10 rounded-full blur-[80px]" />
-            <div className="flex flex-col lg:flex-row gap-16 relative z-10">
-              <div className="lg:w-1/4">
-                <h2 className="text-3xl font-black text-slate-900 leading-tight">概要</h2>
-                <div className="h-0.5 w-8 bg-sky-500 rounded-full mt-4" />
+          <motion.div {...fadeUp} className="max-w-4xl mx-auto rounded-[3rem] border border-slate-100 bg-slate-50/50 p-10 lg:p-20 shadow-sm relative overflow-hidden">
+            <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-sky-200/10 rounded-full blur-[80px]" />
+            <div className="flex flex-col lg:flex-row gap-16 items-start relative z-10">
+              <div className="lg:w-1/3">
+                <p className="text-[10px] font-black tracking-[0.3em] text-sky-600 uppercase mb-4 text-center sm:text-left">Details</p>
+                <h2 className="text-4xl font-black text-slate-900 leading-tight text-center sm:text-left underline decoration-sky-500/20 underline-offset-8">会社概要</h2>
               </div>
-              <div className="lg:w-3/4 w-full space-y-6">
+              <div className="lg:w-2/3 w-full space-y-8">
                 {companyInfo.map((info) => (
-                  <div key={info.label} className="border-b border-slate-200 pb-5 group transition-colors hover:border-sky-200">
-                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1.5">{info.label}</p>
-                    <p className="text-base font-bold text-slate-800 leading-relaxed font-sans">{info.value}</p>
+                  <div key={info.label} className="border-b border-slate-200 pb-6 group transition-colors hover:border-sky-300">
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 group-hover:text-sky-500 transition-colors">{info.label}</p>
+                    <p className="text-lg font-bold text-slate-800 leading-relaxed font-sans">{info.value}</p>
                   </div>
                 ))}
               </div>
@@ -236,74 +333,7 @@ export default function JapanAirResearchHomepage() {
         </div>
       </section>
 
-      {/* 提携メリット: カード自体の視認性を優先 */}
-      <section id="benefits" className="bg-slate-50/50 py-32 relative">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <motion.div {...fadeUp} className="max-w-2xl mb-20 text-center sm:text-left">
-            <h2 className="text-4xl font-black tracking-tight text-slate-900 sm:text-5xl mb-6">提携メリット</h2>
-            <p className="text-lg text-slate-500 font-medium font-sans">Strategic value for sustainable differentiation.</p>
-          </motion.div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {benefits.map((benefit, idx) => (
-              <motion.div key={benefit.title} {...fadeUp} transition={{ duration: 0.8, delay: idx * 0.1 }} className="flex flex-col sm:flex-row gap-6 rounded-4xl bg-white p-8 shadow-xl shadow-slate-200/20 hover:shadow-2xl transition-all duration-300">
-                <div className="p-4 rounded-2xl bg-sky-50 h-fit shrink-0">{benefit.icon}</div>
-                <div>
-                  <h3 className="text-xl font-black text-slate-900 mb-3">{benefit.title}</h3>
-                  <p className="text-sm leading-relaxed text-slate-500 font-medium font-sans">{benefit.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 事業内容: フェードアップを統一 */}
-      <section id="business" className="bg-white py-32 relative">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <motion.div {...fadeUp} className="max-w-3xl mb-20 text-center mx-auto">
-            <h2 className="text-4xl font-black tracking-tight text-slate-900 sm:text-5xl mb-8">事業内容</h2>
-          </motion.div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {businessItems.map((item, idx) => (
-              <motion.div key={item.title} {...fadeUp} transition={{ duration: 0.8, delay: idx * 0.05 }} className="group flex flex-col rounded-3xl border border-slate-100 bg-white p-8 hover:shadow-xl transition-all hover:-translate-y-1">
-                <div className="flex justify-between items-start mb-6">
-                  <div className="p-3 rounded-xl bg-slate-50 group-hover:bg-sky-50 transition-colors">{item.icon}</div>
-                  <span className="text-[9px] font-black text-slate-300 tracking-[0.2em]">{item.label}</span>
-                </div>
-                <h3 className="text-lg font-black text-slate-900 mb-4">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-slate-500 font-medium font-sans">{item.text}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 収益モデル: 静的、理解優先 */}
-      <section id="model" className="py-32 bg-slate-50 relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-20 lg:grid-cols-2 lg:items-center">
-            <motion.div {...fadeUp}>
-              <h2 className="text-4xl font-black leading-tight text-slate-900 sm:text-5xl mb-10 text-center sm:text-left">収益サイクル。</h2>
-              <div className="space-y-6">
-                {steps.map((step, index) => (
-                  <div key={step.title} className="flex gap-6 group">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-950 text-base font-black text-white">{index + 1}</div>
-                    <div>
-                      <p className="text-base font-bold text-slate-900 mb-1">{step.title}</p>
-                      <p className="text-xs text-slate-500 font-medium font-sans">{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div {...fadeUp} className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-white p-8 border border-slate-100">
-              <Image src="/royalty-flow-v2.png" alt="Revenue Flow Diagram" width={800} height={600} className="w-full h-auto object-contain" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer / 窓口: 演出を最小限に抑え、信頼感を確保 */}
+      {/* 6. Footer / 提携窓口: 明確な出口戦略 */}
       <footer id="contact" className="bg-slate-950 py-32 text-white relative overflow-hidden animate-flow-bg bg-gradient-to-br from-slate-950 via-slate-900/50 to-slate-950">
         <AirFlowVisual intensity={0.12} />
         <div className="absolute inset-0 z-0 opacity-[0.05] grayscale pointer-events-none">
@@ -311,9 +341,13 @@ export default function JapanAirResearchHomepage() {
         </div>
         
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-20 lg:grid-cols-2">
+          <div className="grid gap-20 lg:grid-cols-2 items-start">
             <motion.div {...fadeUp}>
-              <h2 className="text-4xl font-black sm:text-5xl leading-tight mb-10 text-center sm:text-left">提携・投資の窓口。</h2>
+              <p className="text-[10px] font-black tracking-[0.3em] text-sky-400 uppercase mb-6 text-center sm:text-left">Strategic Alliance</p>
+              <h2 className="text-4xl font-black sm:text-6xl leading-tight mb-10 text-center sm:text-left">提携に関するご相談。</h2>
+              <p className="text-slate-400 font-medium leading-relaxed mb-12 hidden lg:block font-sans max-w-md">
+                JapanAir-Researchは、先進の気体制御技術を社会に広く普及させるための戦略的提携を募集しています。共同研究、技術ライセンス、海外展開など、目的・規模に合わせた柔軟な検討が可能です。弊社技術の導入や出資検討の際は、以下の窓口よりご連絡ください。
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-12">
                 {["技術ライセンス導入", "国内外の事業提携", "公的研究・開発支援", "専門型資本提携"].map(item => (
                   <div key={item} className="flex items-center gap-3">
@@ -324,22 +358,27 @@ export default function JapanAirResearchHomepage() {
               </div>
             </motion.div>
             
-            <motion.div {...fadeUp} className="rounded-[3rem] border border-white/5 bg-white/5 p-10 lg:p-14 backdrop-blur-2xl shadow-3xl">
+            <motion.div 
+              {...fadeUp}
+              className="rounded-[3rem] border border-white/5 bg-white/5 p-10 lg:p-14 backdrop-blur-2xl shadow-3xl lg:translate-y-[-10px]"
+            >
               <div className="space-y-10">
                 <div>
-                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4 font-sans">Corporate Liaison Office</p>
-                  <p className="text-2xl font-black text-white hover:text-sky-400 transition-colors uppercase">JapanAir-Research株式会社</p>
+                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4 font-sans">Liaison Contact</p>
+                  <p className="text-3xl font-black text-white hover:text-sky-400 transition-colors uppercase tracking-tight">提携窓口</p>
                 </div>
+                
                 <div className="grid gap-4">
-                  <a href="mailto:info@w-c-air.com" className="flex items-center justify-between group rounded-2xl bg-sky-600 px-8 py-5 text-sm font-black text-white transition-all hover:bg-sky-500 hover:-translate-y-1 shadow-2xl">
-                    <span>提携・導入のご相談</span>
+                  <a href="mailto:info@w-c-air.com" className="flex items-center justify-between group rounded-2xl bg-sky-600 px-8 py-5 text-sm font-black text-white transition-all hover:bg-sky-500 hover:-translate-y-1 shadow-2xl shadow-sky-900/40">
+                    <span>提携・技術導入のご相談</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </a>
-                  <a href="mailto:info@w-c-air.com" className="flex items-center justify-between group rounded-2xl border border-white/10 bg-white/5 px-8 py-5 text-sm font-black text-white transition-all hover:bg-white/10 hover:-translate-y-1">
+                  <a href="mailto:info@w-c-air.com" className="flex items-center justify-between group rounded-2xl border border-white/10 bg-white/5 px-8 py-5 text-sm font-black text-white transition-all hover:bg-white/10 hover:-translate-y-1 backdrop-blur">
                     <span>その他お問い合わせ</span>
                     <Mail className="w-4 h-4" />
                   </a>
                 </div>
+                <p className="text-[10px] text-slate-500 font-bold tracking-widest uppercase text-center opacity-40">JapanAir-Research Co., Ltd.</p>
               </div>
             </motion.div>
           </div>
@@ -350,24 +389,24 @@ export default function JapanAirResearchHomepage() {
                 <Image src="/logo-yoko.png" alt="JapanAir-Research Horizontal Logo" fill className="object-contain object-left" />
               </div>
               <p className="text-[10px] text-slate-600 font-bold leading-relaxed italic font-sans text-center sm:text-left">
-                Specialized in deep-tech ionization and air quality optimization through long-term R&D. 
-                Focused on global implementation through strategic alliances.
+                Specialized in deep-tech ionization and air quality optimization. Committed to global health and environmental research.
               </p>
             </div>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 w-full lg:w-auto">
-              <div>
+              <div className="space-y-4">
                 <div className="flex items-center gap-2 mb-3">
                   <MapPin className="w-3.5 h-3.5 text-sky-500" />
-                  <p className="text-[10px] font-black text-white uppercase tracking-widest">Office</p>
+                  <p className="text-[10px] font-black text-white uppercase tracking-widest">Headquarters Office</p>
                 </div>
                 <p className="text-[10px] font-bold text-slate-500 leading-relaxed font-sans">
                   〒108-0014 東京都港区芝4-5-12<br />三田ハイツ901 (TOP Office)
                 </p>
               </div>
-              <div>
+              <div className="space-y-4">
                 <div className="flex items-center gap-2 mb-3">
                   <Mail className="w-3.5 h-3.5 text-sky-500" />
-                  <p className="text-[10px] font-black text-white uppercase tracking-widest">Mail</p>
+                  <p className="text-[10px] font-black text-white uppercase tracking-widest">Contact Mail</p>
                 </div>
                 <p className="text-[10px] font-bold text-slate-500 font-sans">info@w-c-air.com</p>
               </div>
