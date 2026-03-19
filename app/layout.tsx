@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "japanAir-research株式会社 | 空気環境改善技術の研究開発・知財ライセンス",
@@ -17,7 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={inter.className}>{children}</body>
+      <body className="antialiased font-sans">{children}</body>
     </html>
   );
 }
+

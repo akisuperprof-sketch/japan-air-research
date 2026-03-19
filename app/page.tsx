@@ -1,3 +1,6 @@
+/**
+ * japanAir-research株式会社 コーポレートサイト
+ */
 "use client";
 
 import Image from "next/image";
