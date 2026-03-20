@@ -1,6 +1,6 @@
 /**
  * JapanAir-Research株式会社 コーポレートサイト
- * プレミアム・情報設計最適化版: セクション順序の変更と文言の洗練
+ * プレミアム・タイポグラフィ最適化版: Hero右側指標の刷新
  */
 "use client";
 
@@ -145,7 +145,7 @@ export default function JapanAirResearchHomepage() {
     { title: "独自技術の研究・知財化", desc: "高度な研究成果を特許として権利化" },
     { title: "パートナー企業へ技術提供", desc: "メーカーやサービス事業者へ技術供与" },
     { title: "製品・サービスの実装", desc: "パートナーを通じた迅速な市場展開" },
-    { title: "収益の最大化", desc: "販売実績に応じた継続的なロイヤリティ収益" },
+    { title: "収益の最大化", desc: "販売利益に応じた継続的なロイヤリティ収益" },
   ];
 
   return (
@@ -178,7 +178,7 @@ export default function JapanAirResearchHomepage() {
         </div>
         
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 lg:px-8">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-20 lg:grid-cols-2 lg:items-center">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: "easeOut" }}>
               <div className="inline-flex items-center gap-2 mb-8 rounded-xl border border-sky-100 bg-white/60 px-3 py-1.5 text-[9px] font-black text-sky-700 shadow-sm backdrop-blur uppercase tracking-[0.2em]">
                 <span className="h-1 w-1 rounded-full bg-sky-500 animate-pulse"></span>
@@ -199,25 +199,56 @@ export default function JapanAirResearchHomepage() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2 }} className="relative hidden lg:block">
-              <div className="relative border border-white/50 bg-white/10 backdrop-blur-2xl rounded-[3rem] p-12 shadow-3xl shadow-slate-200/10 grayscale-[0.2]">
-                <div className="grid grid-cols-2 gap-10">
-                  <div className="space-y-1">
-                    <p className="text-[10px] font-black text-sky-600 tracking-widest uppercase">Efficacy Rate</p>
-                    <p className="text-3xl font-black text-slate-900">99.9%</p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-[10px] font-black text-sky-600 tracking-widest uppercase">Base Network</p>
-                    <p className="text-3xl font-black text-slate-900">Global</p>
+            {/* 指標ブロック: 縦並び・タイポグラフィ主体への刷新 */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }} 
+              animate={{ opacity: 1, x: 0 }} 
+              transition={{ duration: 1, delay: 0.3 }} 
+              className="relative hidden lg:flex flex-col gap-16 pl-20 border-l border-slate-200/50"
+            >
+              <div className="space-y-2">
+                <motion.p 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }} 
+                  transition={{ delay: 0.8 }}
+                  className="text-[10px] font-black text-sky-600 tracking-[0.3em] uppercase"
+                >
+                  Efficacy Rate
+                </motion.p>
+                <h2 className="text-8xl font-black tracking-tighter text-slate-900 leading-none">
+                  99.9<span className="text-4xl ml-1 text-slate-400 font-bold">%</span>
+                </h2>
+              </div>
+              
+              <div className="space-y-4">
+                <motion.p 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }} 
+                  transition={{ delay: 1.0 }}
+                  className="text-[10px] font-black text-slate-500 tracking-[0.3em] uppercase"
+                >
+                  Global Network
+                </motion.p>
+                <div className="flex items-baseline gap-4">
+                  <h3 className="text-5xl font-black tracking-tighter text-slate-800 leading-none">
+                    Global
+                  </h3>
+                  <div className="flex gap-1">
+                    {[1, 2, 3].map(i => (
+                      <span key={i} className="w-1.5 h-1.5 rounded-full bg-sky-200"></span>
+                    ))}
                   </div>
                 </div>
               </div>
+
+              {/* 装飾要素: 空気を感じさせる繊細なライン */}
+              <div className="absolute -left-[1px] top-0 h-24 w-[1px] bg-gradient-to-b from-sky-500 to-transparent"></div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 2. 提携メリット: 価値訴求を最優先 */}
+      {/* 2. 提携メリット */}
       <section id="benefits" className="bg-slate-50/50 py-32 relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div {...fadeUp} className="max-w-2xl mb-20 text-center sm:text-left">
@@ -247,7 +278,7 @@ export default function JapanAirResearchHomepage() {
         </div>
       </section>
 
-      {/* 3. 事業内容: 提供ドメインを明示 */}
+      {/* 3. 事業内容 */}
       <section id="business" className="bg-white py-32 relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div {...fadeUp} className="max-w-3xl mb-20 text-center mx-auto">
@@ -277,7 +308,7 @@ export default function JapanAirResearchHomepage() {
         </div>
       </section>
 
-      {/* 4. 収益モデル: ビジネスの透明性を示す */}
+      {/* 4. 収益モデル */}
       <section id="model" className="py-32 bg-slate-50/50 relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-20 lg:grid-cols-2 lg:items-center">
@@ -310,7 +341,7 @@ export default function JapanAirResearchHomepage() {
         </div>
       </section>
 
-      {/* 5. 会社概要: 検討の最終確認 */}
+      {/* 5. 会社概要 */}
       <section id="overview" className="bg-white py-32 relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div {...fadeUp} className="max-w-4xl mx-auto rounded-[3rem] border border-slate-100 bg-slate-50/50 p-10 lg:p-20 shadow-sm relative overflow-hidden">
@@ -333,7 +364,7 @@ export default function JapanAirResearchHomepage() {
         </div>
       </section>
 
-      {/* 6. Footer / 提携窓口: 明確な出口戦略 */}
+      {/* 6. Footer / 提携窓口 */}
       <footer id="contact" className="bg-slate-950 py-32 text-white relative overflow-hidden animate-flow-bg bg-gradient-to-br from-slate-950 via-slate-900/50 to-slate-950">
         <AirFlowVisual intensity={0.12} />
         <div className="absolute inset-0 z-0 opacity-[0.05] grayscale pointer-events-none">
@@ -346,7 +377,7 @@ export default function JapanAirResearchHomepage() {
               <p className="text-[10px] font-black tracking-[0.3em] text-sky-400 uppercase mb-6 text-center sm:text-left">Strategic Alliance</p>
               <h2 className="text-4xl font-black sm:text-6xl leading-tight mb-10 text-center sm:text-left">提携に関するご相談。</h2>
               <p className="text-slate-400 font-medium leading-relaxed mb-12 hidden lg:block font-sans max-w-md">
-                JapanAir-Researchは、先進の気体制御技術を社会に広く普及させるための戦略的提携を募集しています。共同研究、技術ライセンス、海外展開など、目的・規模に合わせた柔軟な検討が可能です。弊社技術の導入や出資検討の際は、以下の窓口よりご連絡ください。
+                JapanAir-Researchは、先進의 気体制御技術を社会に広く普及させるための戦略的提携を募集しています。共同研究、技術ライセンス、海外展開など、目的・規模に合わせた柔軟な検討が可能です。弊社技術の導入や出資検討の際は、以下の窓口よりご連絡ください。
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-12">
                 {["技術ライセンス導入", "国内外の事業提携", "公的研究・開発支援", "専門型資本提携"].map(item => (
@@ -389,7 +420,8 @@ export default function JapanAirResearchHomepage() {
                 <Image src="/logo-yoko.png" alt="JapanAir-Research Horizontal Logo" fill className="object-contain object-left" />
               </div>
               <p className="text-[10px] text-slate-600 font-bold leading-relaxed italic font-sans text-center sm:text-left">
-                Specialized in deep-tech ionization and air quality optimization. Committed to global health and environmental research.
+                Specialized in deep-tech ionization and air quality optimization through long-term R&D. 
+                Focused on global implementation through strategic alliances.
               </p>
             </div>
             
